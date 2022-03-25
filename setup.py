@@ -11,6 +11,8 @@ with open('requirements.txt') as f:
 setup(
     name="jsonabler",
     version=version,
+    author="webfucktory",
+    author_email="root@webfucktory.com",
     url="https://github.com/webfucktory/jsonabler",
     packages=find_packages(),
     classifiers=[

@@ -12,8 +12,6 @@ from jsonabler import Jsonable
 class Foo(Jsonable):
     def __init__(self, bar: str):
         self.__bar = bar
-        
-    # ...
     
     def get_jsonable_data(self) -> dict:
         return {

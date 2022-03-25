@@ -31,6 +31,3 @@ jobs:
     - name: Lint with flake8
       run: |
         flake8 jsonabler/ tests/ setup.py --count --show-source --statistics
-    - name: Test with pytest
-      run: |
-        pytest

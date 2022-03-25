@@ -91,6 +91,6 @@ def download_foo() -> Foo:
         ...
 ```
 
-### License
+## License
 
 Distributed under the MIT License. See `LICENSE` file for more information.

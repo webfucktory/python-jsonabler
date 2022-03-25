@@ -19,7 +19,7 @@ setup(
     description="Make your classes Jsonable",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/webfucktory/jsonabler",
+    url="https://github.com/webfucktory/python-jsonabler",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 5 - Production/Stable",

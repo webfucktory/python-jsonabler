@@ -8,11 +8,16 @@ with open('requirements.txt') as f:
         if not line.strip().startswith('#')
     ]
 
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
 setup(
     name="jsonabler",
     version=version,
     author="webfucktory",
     author_email="root@webfucktory.com",
+    description="Make your classes Jsonable",
+    long_description=long_description,
     url="https://github.com/webfucktory/jsonabler",
     packages=find_packages(),
     classifiers=[

@@ -4,9 +4,8 @@ from abc import ABC, abstractmethod
 
 
 class Jsonable(ABC):
-    @classmethod
     @abstractmethod
-    def get_jsonable_data(cls) -> dict:
+    def get_jsonable_data(self) -> dict:
         pass
 
     @classmethod

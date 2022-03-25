@@ -1,10 +1,24 @@
 # jsonabler
 
-A simple Python object to JSON string encoder/decoder. 
+Python package for make your classes easy encodable to JSON string and vice-versa. 
 
-## Making a Jsonable 
+## Getting started
 
-Make your class extends `Jsonable` and implements `get_jsonable_data` and `from_jsonable_data` methods with the encoding/decoding logic.
+### Requirements
+
+- Python >= 3.8
+
+### Installation
+
+```bash
+pip install jsonabler
+```
+
+## Usage
+
+### Making a Jsonable 
+
+Make your class extends the `Jsonable` interface and implements `get_jsonable_data` and `from_jsonable_data` methods with the encoding/decoding logic.
 
 ```python
 from jsonabler import Jsonable 
@@ -23,7 +37,7 @@ class Foo(Jsonable):
         return cls(data['bar'])
 ```
 
-## Encoding a Jsonable
+### Encoding a Jsonable
 
 Call `dumps` method passing a Jsonable object.
 
@@ -37,7 +51,7 @@ def upload_foo(foo: Foo) -> None:
     ...
 ```
 
-### Encoded Foo
+#### Encoded Foo
 ```json5
 [
   'Foo',
@@ -47,7 +61,7 @@ def upload_foo(foo: Foo) -> None:
 ]
 ```
 
-## Decoding a Jsonable
+### Decoding a Jsonable
 
 1. Call `register_jsonable` method for registering the Jsonables types;
 2. Call `loads` method passing the JSON string.
@@ -65,16 +79,18 @@ def download_foo() -> Foo:
 
     try:
         return loads(json_string)
-
+    
     # not a valid encoded JSON string
     except JSONDecodeError:  
         ...
-
     # the Jsonable type of the encoded object was not registered
     except JsonableNotRegisteredError:  
         ...
-
     # something went wrong while decoding the object
     except JsonableDecodeError:  
         ...
 ```
+
+### License
+
+Distributed under the MIT License. See `LICENSE` file for more information.

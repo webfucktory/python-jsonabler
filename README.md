@@ -83,9 +83,11 @@ def download_foo() -> Foo:
     # not a valid encoded JSON string
     except JSONDecodeError:  
         ...
+    
     # the Jsonable type of the encoded object was not registered
     except JsonableNotRegisteredError:  
         ...
+    
     # something went wrong while decoding the object
     except JsonableDecodeError:  
         ...

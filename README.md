@@ -39,7 +39,7 @@ class Foo(Jsonable):
 
 ### Encoding a Jsonable
 
-Call `dumps` method passing a Jsonable object.
+Call `dumps` method passing a `Jsonable` object.
 
 ```python
 from jsonabler import dumps
@@ -63,17 +63,13 @@ def upload_foo(foo: Foo) -> None:
 
 ### Decoding a Jsonable
 
-1. Call `register_jsonable` method for registering the Jsonables types;
-2. Call `loads` method passing the JSON string.
+Call `loads` method passing the JSON string.
 
 ```python
-from jsonabler import register_jsonables, loads, JsonableDecodeError, JsonableNotRegisteredError
+from jsonabler import loads, JsonableDecodeError, JsonableNotRegisteredError
 from json import JSONDecodeError
 
-def download_foo() -> Foo:
-    # register Jsonable types for decoding
-    register_jsonables({Foo})
-    
+def download_foo() -> Foo:    
     # receive JSON string encoded Foo object
     ...
 

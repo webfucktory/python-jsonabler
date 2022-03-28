@@ -6,14 +6,33 @@
 # Generic release markers:
 #   X.Y.0   # For first release after an increment in Y
 #   X.Y.Z   # For bugfix releases
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 
-import json
-from typing import Set, Type, Tuple
+import inspect as inspect
+import json as json
+import sys as sys
+from typing import Set as Set, Type as Type, Tuple as Tuple
 
 from .jsonable import Jsonable
 
-_jsonables: Set[Type[Jsonable]] = set()
+
+def __get_jsonables() -> Set[Type[Jsonable]]:
+    result = set()
+
+    for module in sys.modules:
+        for _, member in inspect.getmembers(module, lambda m: inspect.isclass(m) and issubclass(m, Jsonable)):
+            result.add(member)
+
+    # g = globals().copy()
+    #
+    # for _, obj in g.items():
+    #     if inspect.isclass(obj) and issubclass(obj, Jsonable) and obj is not Jsonable:
+    #         result.add(obj)
+
+    return result
+
+
+_jsonables: Set[Type[Jsonable]] = __get_jsonables()
 
 
 class JsonableNotRegisteredError(ValueError):
@@ -24,28 +43,16 @@ class JsonableDecodeError(ValueError):
     pass
 
 
+class JsonableEncodeError(ValueError):
+    pass
+
+
 def __get_type(s: str) -> Type[Jsonable]:
     for j in _jsonables:
         if j.__name__ == s:
             return j
 
     raise JsonableNotRegisteredError(s)
-
-
-def register_jsonables(josanable_types: Set[Type[Jsonable]]) -> None:
-    """
-    Registers Jsonable types for being loaded from JSON encoded strings.
-    It is necessary to register your Jsonable types before loading them.
-
-    :param josanable_types: Jsonable types to register.
-    :return: None.
-    """
-
-    assert type(josanable_types), Set[Type[Jsonable]]
-
-    global _jsonables
-
-    _jsonables = _jsonables.union(josanable_types)
 
 
 def loads(s: str) -> Jsonable:
@@ -84,6 +91,13 @@ def dumps(jsonable_object: Jsonable) -> str:
 
     :param jsonable_object: Jsonable type object to encode.
     :return: JSON encoded string.
+    :raises JsonableEncodeError: if an exception was risen during get_jsonable_data() method execution of the passed
+        object
     """
 
-    return json.dumps((type(jsonable_object).__name__, jsonable_object.get_jsonable_data()))
+    try:
+        return json.dumps((type(jsonable_object).__name__, jsonable_object.get_jsonable_data()))
+
+    except Exception:
+        raise JsonableEncodeError("An error occured while encoding the Jsonable object, check the get_jsonable_data "
+                                  "method")

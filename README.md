@@ -42,9 +42,7 @@ class Foo(Jsonable):
 
 For decoding your Jsonable classes, you need to register it.
 
-#### `@jsonabled` decorator
-
-Decorating your classes with the `jsonabled` decorator.
+#### Decorating your classes with the `@jsonabled` decorator
 
 ```python
 from jsonabler import Jsonable, jsonabled 
@@ -54,7 +52,7 @@ class Foo(Jsonable):
     ...
 ```    
 
-Calling `register_jsonables` method passing class types.
+#### Calling `register_jsonables` method passing class types
 
 ```python
 from jsonabler import Jsonable, register_jsonables 

@@ -18,11 +18,12 @@ pip install jsonabler
 
 ### Making a Jsonable 
 
-Make your class extends the `Jsonable` interface and implements `get_jsonable_data` and `from_jsonable_data` methods with the encoding/decoding logic.
+Make your class extends the `Jsonable` interface and implements `get_jsonable_data` and `from_jsonable_data` methods with the encoding/decoding logic. 
 
 ```python
-from jsonabler import Jsonable 
+from jsonabler import Jsonable, jsonabled 
 
+@jsonabled
 class Foo(Jsonable):
     def __init__(self, bar: str):
         self.__bar = bar
@@ -35,6 +36,34 @@ class Foo(Jsonable):
     @classmethod
     def from_jsonable_data(cls, data: dict) -> Jsonable:
         return cls(data['bar'])
+```
+
+### Registering a Jsonable
+
+For decoding your Jsonable classes, you need to register it.
+
+#### `@jsonabled` decorator
+
+Decorating your classes with the `jsonabled` decorator.
+
+```python
+from jsonabler import Jsonable, jsonabled 
+
+@jsonabled
+class Foo(Jsonable):
+    ...
+```    
+
+Calling `register_jsonables` method passing class types.
+
+```python
+from jsonabler import Jsonable, register_jsonables 
+
+class Foo(Jsonable):
+    ...
+
+if __name__ == '__main__':
+    register_jsonables({Foo})
 ```
 
 ### Encoding a Jsonable

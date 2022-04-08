@@ -6,9 +6,9 @@ from abc import ABC, abstractmethod
 class Jsonable(ABC):
     @abstractmethod
     def get_jsonable_data(self) -> dict:
-        pass
+        raise NotImplementedError
 
     @classmethod
     @abstractmethod
     def from_jsonable_data(cls, data: dict) -> Jsonable:
-        pass
+        raise NotImplementedError

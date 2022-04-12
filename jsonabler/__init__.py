@@ -1,17 +1,11 @@
-# flake8: noqa
-
-# PEP0440 compatible formatted version, see:
-# https://www.python.org/dev/peps/pep-0440/
-#
-# Generic release markers:
-#   X.Y.0   # For first release after an increment in Y
-#   X.Y.Z   # For bugfix releases
-__version__ = '0.1.5'
-
 import json as json
 from typing import Set as Set, Tuple as Tuple, Type as Type
 
+from pkg_resources import get_distribution
+
 from .jsonable import Jsonable
+
+__version__ = get_distribution('tornado-jsonschema').version
 
 _jsonables: Set[Type[Jsonable]] = set()
 

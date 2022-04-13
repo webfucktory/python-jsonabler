@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 
 def get_version():
-    with open("events_manager/__init__.py") as f:
+    with open("jsonabler/__init__.py") as f:
         for line in f.read().splitlines():
             if line.startswith('__version__'):
                 return line.split('"' if '"' in line else "'")[1]

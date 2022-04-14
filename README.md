@@ -1,10 +1,10 @@
-# jsonabler
-
-Python package for making your classes easy encodable to JSON string and vice-versa. 
-
 [![Lint & Test](https://github.com/webfucktory/python-jsonabler/actions/workflows/lint-test.yml/badge.svg)](https://github.com/webfucktory/python-jsonabler/actions/workflows/lint-test.yml)
 [![PyPI version](https://badge.fury.io/py/jsonabler.svg)](https://pypi.org/project/jsonabler)
 [![Downloads count](https://img.shields.io/pypi/dm/jsonabler)](https://pypistats.org/packages/jsonabler)
+
+# jsonabler
+
+Python package for making your classes easy encodable to JSON string and vice-versa. 
 
 ## Getting started
 

@@ -1,5 +1,7 @@
 # jsonabler
 
+[![Lint & Test](https://github.com/webfucktory/python-jsonabler/actions/workflows/lint-test.yml/badge.svg)](https://github.com/webfucktory/python-jsonabler/actions/workflows/lint-test.yml)
+
 Python package for make your classes easy encodable to JSON string and vice-versa. 
 
 ## Getting started

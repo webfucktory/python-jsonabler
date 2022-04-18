@@ -29,7 +29,7 @@ setup(
     version=get_version(),
     author="webfucktory",
     author_email="root@webfucktory.com",
-    description="Make your classes Jsonable",
+    description="Python package for making your classes easy encodable to JSON string and vice-versa",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
     url="https://github.com/webfucktory/python-jsonabler",

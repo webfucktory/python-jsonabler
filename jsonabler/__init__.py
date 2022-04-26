@@ -4,7 +4,7 @@
 # Generic release markers:
 #   X.Y.0   # For first release after an increment in Y
 #   X.Y.Z   # For bugfix releases
-__version__ = '0.1.6'
+__version__ = '0.2.0'
 
 import json as json
 from typing import Optional, Set as Set, Tuple as Tuple, Type as Type, Union

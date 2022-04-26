@@ -71,7 +71,7 @@ def loads(s: str) -> Jsonable:
         encoded object, but the encoded Jsonable object type has not been registered.
     """
 
-    t: Tuple[str, dict] = tuple(json.loads(s))
+    t: Tuple[str, JSONDataType] = tuple(json.loads(s))
 
     if len(t) < 2:
         raise JsonableDecodeError("Input string is not a valid Jsonable encoded object")

@@ -4,12 +4,14 @@
 # Generic release markers:
 #   X.Y.0   # For first release after an increment in Y
 #   X.Y.Z   # For bugfix releases
-__version__ = '0.1.5'
+__version__ = '0.1.6'
 
 import json as json
-from typing import Set as Set, Tuple as Tuple, Type as Type
+from typing import Optional, Set as Set, Tuple as Tuple, Type as Type, Union
 
 from .jsonable import Jsonable
+
+JSONDataType = Optional[Union[dict, list, tuple, str, int, float, bool]]
 
 _jsonables: Set[Type[Jsonable]] = set()
 

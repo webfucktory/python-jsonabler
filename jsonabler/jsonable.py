@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from typing import Optional, Union
 
-from . import JSONDataType
+JSONDataType = Optional[Union[dict, list, tuple, str, int, float, bool]]
 
 
 class Jsonable(ABC):

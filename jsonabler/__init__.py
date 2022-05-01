@@ -4,7 +4,7 @@
 # Generic release markers:
 #   X.Y.0   # For first release after an increment in Y
 #   X.Y.Z   # For bugfix releases
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 
 import json as json
 from typing import Set as Set, Tuple as Tuple, Type as Type
@@ -26,9 +26,13 @@ class JsonableEncodeError(ValueError):
     pass
 
 
-def __get_type(s: str) -> Type[Jsonable]:
+def _get_name(c: Type[Jsonable]) -> str:
+    return f'{c.__module__}.{c.__qualname__}'
+
+
+def _get_type(s: str) -> Type[Jsonable]:
     for j in _jsonables:
-        if j.__name__ == s:
+        if _get_name(j) == s:
             return j
 
     raise JsonableNotRegisteredError(s)
@@ -74,13 +78,13 @@ def loads(s: str) -> Jsonable:
     if len(t) < 2:
         raise JsonableDecodeError("Input string is not a valid Jsonable encoded object")
 
-    j: Type[Jsonable] = __get_type(t[0])
+    j: Type[Jsonable] = _get_type(t[0])
 
     try:
         return j.from_jsonable_data(t[1])
 
     except Exception:
-        raise JsonableDecodeError("An error occured while decoding the Jsonable object, check the from_jsonable_data "
+        raise JsonableDecodeError("An error occurred while decoding the Jsonable object, check the from_jsonable_data "
                                   "method")
 
 
@@ -95,8 +99,8 @@ def dumps(jsonable_object: Jsonable) -> str:
     """
 
     try:
-        return json.dumps((type(jsonable_object).__name__, jsonable_object.get_jsonable_data()))
+        return json.dumps((_get_name(type(jsonable_object)), jsonable_object.get_jsonable_data()))
 
     except Exception:
-        raise JsonableEncodeError("An error occured while encoding the Jsonable object, check the get_jsonable_data "
+        raise JsonableEncodeError("An error occurred while encoding the Jsonable object, check the get_jsonable_data "
                                   "method")

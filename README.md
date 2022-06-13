@@ -1,4 +1,4 @@
-[![Lint & Test](https://github.com/webfucktory/python-jsonabler/actions/workflows/lint-test.yml/badge.svg)](https://github.com/webfucktory/python-jsonabler/actions/workflows/lint-test.yml)
+[![Lint & Test](https://github.com/webfucktory/python-jsonabler/actions/workflows/lint-and-test.yml/badge.svg)](https://github.com/webfucktory/python-jsonabler/actions/workflows/lint-and-test.yml)
 [![PyPI version](https://badge.fury.io/py/jsonabler.svg)](https://pypi.org/project/jsonabler)
 [![Downloads count](https://img.shields.io/pypi/dm/jsonabler)](https://pypistats.org/packages/jsonabler)
 
@@ -118,6 +118,20 @@ def download_foo() -> Foo:
     # something went wrong while decoding the object
     except JsonableDecodeError:  
         ...
+```
+
+## Development
+
+### Run Tests
+
+```shell script
+./test
+```
+
+### Style Check
+
+```shell script
+./lint
 ```
 
 ## License
